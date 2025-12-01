@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaCode, FaRocket, FaStar } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaCode, FaRocket, FaStar, FaDownload, FaArrowRight, FaMouse, FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [hoveredSkill, setHoveredSkill] = useState(null);
+    const [currentTextIndex, setCurrentTextIndex] = useState(0);
+    const { scrollY } = useScroll();
     
     const profileImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80';
     
-    const skills = [
-        { icon: <FaCode />, name: 'Full-Stack', color: 'from-blue-500 to-cyan-500' },
-        { icon: <FaRocket />, name: 'AI Integration', color: 'from-purple-500 to-pink-500' },
-        { icon: <FaStar />, name: '6+ Years Exp', color: 'from-yellow-500 to-orange-500' }
+    const titles = [
+        'Software Developer',
+        'Full-Stack Engineer',
+        'AI Integration Specialist',
+        'Problem Solver'
     ];
+    
+    const skills = [
+        { icon: <FaCode />, name: 'Full-Stack', color: 'from-blue-500 to-cyan-500', level: 95 },
+        { icon: <FaRocket />, name: 'AI Integration', color: 'from-purple-500 to-pink-500', level: 88 },
+        { icon: <FaStar />, name: '6+ Years Exp', color: 'from-yellow-500 to-orange-500', level: 92 }
+    ];
+    
+    const stats = [
+        { icon: <FaBriefcase />, value: '6+', label: 'Years Experience' },
+        { icon: <FaGraduationCap />, value: '2', label: 'Degrees' },
+        { icon: <FaCode />, value: '50+', label: 'Projects' }
+    ];
+    
+    const yTransform = useTransform(scrollY, [0, 300], [0, -50]);
+    const opacityTransform = useTransform(scrollY, [0, 300], [1, 0]);
     
     useEffect(() => {
         const img = new Image();
@@ -20,99 +38,172 @@ const Hero = () => {
         img.onload = () => setImageLoaded(true);
     }, [profileImage]);
     
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTextIndex((prev) => (prev + 1) % titles.length);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [titles.length]);
+    
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
-            {/* Animated Background Elements */}
+        <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 relative overflow-hidden">
+            {/* Enhanced Animated Background */}
             <div className="absolute inset-0 overflow-hidden">
+                {/* Particle System */}
+                {[...Array(15)].map((_, i) => (
+                    <motion.div
+                        key={i}
+                        animate={{
+                            x: [Math.random() * 50 - 25, Math.random() * 50 - 25],
+                            y: [Math.random() * 50 - 25, Math.random() * 50 - 25],
+                            opacity: [0, 1, 0],
+                        }}
+                        transition={{
+                            duration: Math.random() * 8 + 4,
+                            repeat: Infinity,
+                            delay: Math.random() * 3,
+                            ease: "linear"
+                        }}
+                        className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                        }}
+                    />
+                ))}
+                
+                {/* Main Background Orbs - Smaller for better fit */}
                 <motion.div
                     animate={{
                         x: [0, 100, 0],
                         y: [0, -100, 0],
+                        scale: [1, 1.1, 1],
                     }}
                     transition={{
                         duration: 20,
                         repeat: Infinity,
-                        ease: "linear"
+                        ease: "easeInOut"
                     }}
-                    className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl"
+                    className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full blur-3xl"
                 />
                 <motion.div
                     animate={{
                         x: [0, -100, 0],
                         y: [0, 100, 0],
+                        scale: [1.1, 1, 1.1],
                     }}
                     transition={{
                         duration: 25,
                         repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+                />
+                <motion.div
+                    animate={{
+                        rotate: [0, 360],
+                    }}
+                    transition={{
+                        duration: 30,
+                        repeat: Infinity,
                         ease: "linear"
                     }}
-                    className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl"
                 />
             </div>
             
-            <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Left Column - Text Content */}
+            <motion.div 
+                style={{ y: yTransform, opacity: opacityTransform }}
+                className="max-w-6xl mx-auto relative z-10"
+            >
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    {/* Left Column - Enhanced Text Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8 }}
                         className="text-center lg:text-left"
                     >
-                        {/* Greeting */}
+                        {/* Enhanced Greeting - One Line */}
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-xl md:text-2xl text-cyan-400 mb-4 font-light"
+                            className="text-lg md:text-xl text-cyan-400 font-light mb-2"
                         >
-                            Hey 👋 I&apos;m
+                            Welcome to my digital space
                         </motion.h2>
 
-                        {/* Name */}
+                        {/* Enhanced Name - Smaller */}
                         <motion.h1 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
                         >
                             <span className="gradient-text">Subhash Medarametla</span>
                         </motion.h1>
 
-                        {/* Title */}
-                        <motion.div 
+                        {/* Animated Title - One Line */}
+                        <motion.h3 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
-                            className="mb-8"
+                            className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-6"
                         >
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-4">
-                                Software Developer
-                            </h3>
-                            <div className="flex items-center gap-2 flex-wrap lg:justify-start justify-center">
+                            <AnimatePresence mode="wait">
+                                <motion.span
+                                    key={currentTextIndex}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.5 }}
+                                    className="inline-block"
+                                >
+                                    {titles[currentTextIndex]}
+                                </motion.span>
+                            </AnimatePresence>
+                            <motion.span
+                                animate={{ opacity: [1, 0, 1] }}
+                                transition={{ duration: 1, repeat: Infinity }}
+                                className="ml-2 text-cyan-400"
+                            >
+                                |
+                            </motion.span>
+                        </motion.h3>
+                        {/* Enhanced Skills Display - More Compact */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="mb-6"
+                        >
+                            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                                 {skills.map((skill, idx) => (
                                     <motion.div
                                         key={idx}
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+                                        transition={{ duration: 0.5, delay: 0.6 + idx * 0.1 }}
                                         onMouseEnter={() => setHoveredSkill(idx)}
                                         onMouseLeave={() => setHoveredSkill(null)}
-                                        className="relative"
+                                        className="relative group"
                                     >
-                                        <span className={`px-4 py-2 rounded-full bg-gradient-to-r ${skill.color}/20 border ${skill.color.split(' ')[0]}/30 text-${skill.color.split(' ')[0].split('-')[0]}-300 text-sm flex items-center gap-2 cursor-pointer`}>
-                                            <span className="text-base">{skill.icon}</span>
-                                            {skill.name}
-                                        </span>
+                                        <div className={`px-3 py-2 rounded-xl bg-gradient-to-br ${skill.color}/10 border ${skill.color.split(' ')[0]}/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 cursor-pointer`}>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-lg">{skill.icon}</span>
+                                                <span className="text-xs font-medium text-gray-300">{skill.name}</span>
+                                            </div>
+                                        </div>
                                         <AnimatePresence>
                                             {hoveredSkill === idx && (
                                                 <motion.div
                                                     initial={{ opacity: 0, y: -10 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     exit={{ opacity: 0, y: -10 }}
-                                                    className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                                                    className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-lg shadow-lg whitespace-nowrap z-20"
                                                 >
-                                                    Click to learn more
+                                                    {skill.level}% proficient
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>
@@ -120,79 +211,107 @@ const Hero = () => {
                                 ))}
                             </div>
                         </motion.div>
-
-                        {/* Professional Summary */}
-                        <motion.p 
+                        
+                        {/* Stats Bar - More Compact */}
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
-                            className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed"
+                            className="mb-6"
                         >
-                            Software developer with <span className="text-cyan-400 font-semibold">6+ years</span> across banking (Wells Fargo), e-commerce (Flipkart) and enterprise work at Accenture.
-                            Experienced building web features end-to-end, from React and JavaScript on the frontend to Node.js and Java/Spring Boot on the backend, designing scalable REST APIs on AWS.
-                            Recently completed Master&apos;s with focus on <span className="text-purple-400 font-semibold">AI integration</span> using OpenAI, embeddings, RAG and LLMs.
+                            <div className="flex items-center justify-center lg:justify-start gap-6">
+                                {stats.map((stat, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.7 + idx * 0.1 }}
+                                        className="text-center"
+                                    >
+                                        <div className="flex items-center justify-center gap-1 text-cyan-400 mb-1">
+                                            {stat.icon}
+                                        </div>
+                                        <div className="text-lg font-bold text-white">{stat.value}</div>
+                                        <div className="text-xs text-gray-400">{stat.label}</div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                        {/* Enhanced Professional Summary - One Line */}
+                        <motion.p 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                            className="text-base md:text-lg text-gray-400 max-w-lg mx-auto lg:mx-0 mb-6"
+                        >
+                            Passionate developer with <span className="text-cyan-400 font-semibold">6+ years</span> building scalable web apps. Expert in <span className="text-purple-400 font-semibold">full-stack</span> & <span className="text-purple-400 font-semibold">AI integration</span>.
                         </motion.p>
 
-                        {/* Contact Info */}
+                        {/* Enhanced Contact Info - One Line */}
+                        <motion.div 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-6"
+                        >
+                            <a href="tel:+13143206694" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 text-xs">
+                                <FaPhone className="text-cyan-400" />
+                                <span className="text-gray-300 group-hover:text-white transition-colors">+1 (314) 320-6694</span>
+                            </a>
+                            <a href="mailto:subhashaj05@gmail.com" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 text-xs">
+                                <FaEnvelope className="text-purple-400" />
+                                <span className="text-gray-300 group-hover:text-white transition-colors">Email</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/subhashchandrabosu" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 text-xs">
+                                <FaLinkedin className="text-blue-400" />
+                                <span className="text-gray-300 group-hover:text-white transition-colors">LinkedIn</span>
+                            </a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300 text-xs">
+                                <FaGithub className="text-gray-400" />
+                                <span className="text-gray-300 group-hover:text-white transition-colors">GitHub</span>
+                            </a>
+                        </motion.div>
+
+                        {/* Enhanced CTA Buttons - One Line */}
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
-                            className="flex flex-wrap items-center gap-6 mb-12 lg:justify-start justify-center"
-                        >
-                            <a href="tel:+13143206694" className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors group">
-                                <div className="icon-wrapper group-hover:scale-110 transition-transform">
-                                    <FaPhone className="text-cyan-400" />
-                                </div>
-                                <span>+1 (314) 320-6694</span>
-                            </a>
-                            <a href="mailto:subhashaj05@gmail.com" className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors group">
-                                <div className="icon-wrapper group-hover:scale-110 transition-transform">
-                                    <FaEnvelope className="text-cyan-400" />
-                                </div>
-                                <span>subhashaj05@gmail.com</span>
-                            </a>
-                            <a href="https://www.linkedin.com/in/subhashchandrabosu" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors group">
-                                <div className="icon-wrapper group-hover:scale-110 transition-transform">
-                                    <FaLinkedin className="text-cyan-400" />
-                                </div>
-                                <span>LinkedIn</span>
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors group">
-                                <div className="icon-wrapper group-hover:scale-110 transition-transform">
-                                    <FaGithub className="text-cyan-400" />
-                                </div>
-                                <span>GitHub</span>
-                            </a>
-                        </motion.div>
-
-                        {/* CTA Buttons */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.8 }}
-                            className="flex flex-wrap gap-4 lg:justify-start justify-center"
+                            className="flex flex-wrap gap-2 justify-center lg:justify-start"
                         >
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                                className="btn-primary"
+                                className="group relative px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25 text-sm"
                             >
-                                Get In Touch
+                                <span className="relative z-10 flex items-center gap-1">
+                                    Get In Touch
+                                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                </span>
+                                <motion.div
+                                    initial={{ x: '-100%' }}
+                                    whileHover={{ x: '0%' }}
+                                    transition={{ duration: 0.3 }}
+                                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
+                                />
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => document.getElementById('experience').scrollIntoView({ behavior: 'smooth' })}
-                                className="px-8 py-3 rounded-full border-2 border-cyan-400 text-cyan-400 font-semibold hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300"
+                                className="group relative px-4 py-2 bg-transparent border-2 border-cyan-400 text-cyan-400 font-semibold rounded-full overflow-hidden transition-all duration-300 hover:bg-cyan-400 hover:text-gray-900 text-sm"
                             >
-                                View My Work
+                                <span className="relative z-10 flex items-center gap-1">
+                                    <FaDownload className="group-hover:rotate-12 transition-transform" />
+                                    View My Work
+                                </span>
                             </motion.button>
                         </motion.div>
                     </motion.div>
                     
-                    {/* Right Column - Profile Image */}
+                    {/* Right Column - Enhanced Profile Image - Smaller */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -200,21 +319,21 @@ const Hero = () => {
                         className="flex justify-center lg:justify-end"
                     >
                         <div className="relative">
-                            {/* Glow Effect */}
+                            {/* Enhanced Glow Effect - Smaller */}
                             <motion.div
                                 animate={{
                                     scale: [1, 1.1, 1],
-                                    rotate: [0, 5, -5, 0],
+                                    rotate: [0, 3, -3, 0],
                                 }}
                                 transition={{
                                     duration: 4,
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full blur-2xl opacity-30"
+                                className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 rounded-full blur-2xl opacity-30"
                             />
                             
-                            {/* Profile Image Container */}
+                            {/* Profile Image Container - Smaller */}
                             <motion.div
                                 animate={{
                                     y: [0, -10, 0],
@@ -224,39 +343,40 @@ const Hero = () => {
                                     repeat: Infinity,
                                     ease: "easeInOut"
                                 }}
-                                className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
+                                className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64"
                             >
-                                {/* Image Frame */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full p-1">
+                                {/* Enhanced Image Frame */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full p-1">
                                     <div className="w-full h-full bg-gray-900 rounded-full p-1">
                                         <div className="w-full h-full bg-gray-800 rounded-full overflow-hidden relative">
                                             {imageLoaded ? (
                                                 <img
                                                     src={profileImage}
                                                     alt="Subhash Medarametla"
-                                                    className="w-full h-full object-cover"
+                                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                                                 />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center">
                                                     <motion.div
                                                         animate={{ rotate: 360 }}
                                                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                                                        className="w-12 h-12 border-4 border-cyan-400 border-t-transparent rounded-full"
+                                                        className="w-8 h-8 border-3 border-cyan-400 border-t-transparent rounded-full"
                                                     />
                                                 </div>
                                             )}
                                             
-                                            {/* Overlay Gradient */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-transparent to-transparent pointer-events-none" />
+                                            {/* Enhanced Overlay Gradient */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent pointer-events-none" />
                                         </div>
                                     </div>
                                 </div>
                                 
-                                {/* Floating Elements */}
+                                {/* Enhanced Floating Elements - Smaller */}
                                 <motion.div
                                     animate={{
-                                        y: [0, -20, 0],
+                                        y: [0, -15, 0],
                                         rotate: [0, 10, -10, 0],
+                                        scale: [1, 1.1, 1],
                                     }}
                                     transition={{
                                         duration: 5,
@@ -264,15 +384,16 @@ const Hero = () => {
                                         ease: "easeInOut",
                                         delay: 0.5
                                     }}
-                                    className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-lg"
+                                    className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-900"
                                 >
-                                    <FaStar className="text-white text-xl" />
+                                    <FaStar className="text-white text-sm animate-pulse" />
                                 </motion.div>
                                 
                                 <motion.div
                                     animate={{
-                                        y: [0, -15, 0],
+                                        y: [0, -12, 0],
                                         rotate: [0, -10, 10, 0],
+                                        scale: [1, 1.1, 1],
                                     }}
                                     transition={{
                                         duration: 4,
@@ -280,15 +401,16 @@ const Hero = () => {
                                         ease: "easeInOut",
                                         delay: 1
                                     }}
-                                    className="absolute -bottom-4 -left-4 w-14 h-14 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center shadow-lg"
+                                    className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-900"
                                 >
-                                    <FaCode className="text-white text-lg" />
+                                    <FaCode className="text-white text-xs" />
                                 </motion.div>
                                 
                                 <motion.div
                                     animate={{
-                                        y: [0, -25, 0],
+                                        y: [0, -18, 0],
                                         rotate: [0, 15, -15, 0],
+                                        scale: [1, 1.15, 1],
                                     }}
                                     transition={{
                                         duration: 6,
@@ -296,29 +418,48 @@ const Hero = () => {
                                         ease: "easeInOut",
                                         delay: 1.5
                                     }}
-                                    className="absolute top-1/2 -left-8 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-lg"
+                                    className="absolute top-1/2 -left-6 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex items-center justify-center shadow-xl border-2 border-gray-900"
                                 >
-                                    <FaRocket className="text-white text-sm" />
+                                    <FaRocket className="text-white text-xs" />
                                 </motion.div>
                             </motion.div>
                         </div>
                     </motion.div>
                 </div>
                 
-                {/* Scroll Indicator */}
+                {/* Enhanced Scroll Indicator - More Compact */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="mt-16 text-center lg:text-left"
+                    transition={{ duration: 1, delay: 1.0 }}
+                    className="mt-12 text-center lg:text-left"
                 >
-                    <div className="inline-block animate-bounce">
-                        <div className="w-6 h-10 border-2 border-cyan-400 rounded-full mx-auto lg:mx-0 flex items-start justify-center p-2">
-                            <div className="w-1 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
+                    <div className="inline-flex flex-col items-center gap-1 cursor-pointer group"
+                         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+                        <motion.div
+                            animate={{ y: [0, 5, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="text-cyan-400 text-xs font-medium group-hover:text-cyan-300 transition-colors"
+                        >
+                            Scroll to explore
+                        </motion.div>
+                        <div className="relative">
+                            <motion.div
+                                animate={{ y: [0, 8, 0] }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                                className="w-5 h-8 border border-cyan-400 rounded-full flex items-start justify-center p-1.5 group-hover:border-cyan-300 transition-colors"
+                            >
+                                <motion.div
+                                    animate={{ y: [0, 10, 0] }}
+                                    transition={{ duration: 2, repeat: Infinity }}
+                                    className="w-0.5 h-2 bg-cyan-400 rounded-full group-hover:bg-cyan-300 transition-colors"
+                                />
+                            </motion.div>
+                            <FaMouse className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-cyan-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                     </div>
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 };
