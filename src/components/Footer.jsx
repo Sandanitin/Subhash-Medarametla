@@ -20,8 +20,17 @@ const Footer = () => {
                             © 2025 <span className="gradient-text font-semibold">Subhash Medarametla</span>. All rights reserved.
                         </p>
                         <p className="text-gray-500 text-sm mt-1">
-                            Designed and Developed by <span className="text-cyan-400 font-semibold">Vikrin</span>
+                            Designed and Developed by{" "}
+                            <a
+                                href="https://www.vikrin.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cyan-400 font-semibold hover:underline"
+                            >
+                                Vikrin
+                            </a>
                         </p>
+
                     </div>
 
                     {/* Social Links */}
