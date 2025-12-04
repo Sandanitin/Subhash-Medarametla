@@ -26,13 +26,7 @@ const Contact = () => {
     };
 
     const contactInfo = [
-        {
-            icon: <FaPhone className="text-2xl" />,
-            label: 'Phone',
-            value: '+1 (314) 320-6694',
-            link: 'tel:+13143206694',
-            gradient: 'from-green-500 to-teal-500'
-        },
+
         {
             icon: <FaEnvelope className="text-2xl" />,
             label: 'Email',

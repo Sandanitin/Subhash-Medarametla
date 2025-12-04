@@ -27,7 +27,6 @@ const Skills = () => {
             gradient: 'from-purple-500 to-pink-500',
             skills: [
                 { name: 'React.js', level: 95 },
-                { name: 'Angular', level: 85 },
                 { name: 'GraphQL', level: 82 },
                 { name: 'Tailwind CSS', level: 88 },
             ]
@@ -60,7 +59,6 @@ const Skills = () => {
             gradient: 'from-indigo-500 to-purple-500',
             skills: [
                 { name: 'AWS', icon: <FaAws />, level: 90 },
-                { name: 'Microsoft Azure', icon: <FaWindows />, level: 85 },
                 { name: 'Google Cloud', level: 80 },
             ]
         },
@@ -93,7 +91,6 @@ const Skills = () => {
             skills: [
                 { name: 'JUnit', level: 88 },
                 { name: 'Jest', level: 85 },
-                { name: 'SonarQube', level: 82 },
             ]
         },
     ];

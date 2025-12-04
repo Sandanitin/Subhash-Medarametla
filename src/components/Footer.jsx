@@ -7,7 +7,7 @@ const Footer = () => {
     const socialLinks = [
         { icon: <FaLinkedin />, link: '#', name: 'LinkedIn' },
         { icon: <FaGithub />, link: '#', name: 'GitHub' },
-        { icon: <FaTwitter />, link: '#', name: 'Twitter' }
+
     ];
 
     return (
@@ -17,10 +17,10 @@ const Footer = () => {
                     {/* Copyright */}
                     <div className="text-center md:text-left">
                         <p className="text-gray-400">
-                            © {currentYear} <span className="gradient-text font-semibold">Swati Karni</span>. All rights reserved.
+                            © 2025 <span className="gradient-text font-semibold">Subhash Medarametla</span>. All rights reserved.
                         </p>
                         <p className="text-gray-500 text-sm mt-1">
-                            Built with <FaHeart className="inline text-red-500 animate-pulse" /> using React & Tailwind CSS
+                            Designed and Developed by <span className="text-cyan-400 font-semibold">Vikrin</span>
                         </p>
                     </div>
 

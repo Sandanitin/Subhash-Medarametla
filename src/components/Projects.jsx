@@ -10,10 +10,7 @@ const Projects = () => {
             type: 'Academic Project',
             description: 'AI-integrated hospital portal with patient records, cancer-risk screening, and a policy/help chat.',
             features: [
-                'Implemented Python CNN with Grad-CAM for cancer-risk screening and visualization',
-                'Built a policy/help chat using OpenAI with embeddings + vector search (RAG) over hospital PDFs',
-                'Secured the application via Spring Boot REST + OAuth2',
-                'Instrumented with basic telemetry for research/education use'
+                'Built a policy/help chat using OpenAI with embeddings + vector search (RAG) over hospital PDFs'
             ],
             tech: ['Python', 'Spring Boot', 'OpenAI API', 'RAG', 'React', 'OAuth2'],
             gradient: 'from-pink-500 to-rose-500',
@@ -25,9 +22,6 @@ const Projects = () => {
             type: 'Academic Project',
             description: 'Python-based home utility agent using OpenAI embeddings and time-series analysis.',
             features: [
-                'Developed an agent to predict bills using simple time-series analysis on tariff and usage data',
-                'Implemented logic to suggest off-peak schedules for cost optimization',
-                'Created alert system for abnormal electricity, water, or gas consumption',
                 'Utilized OpenAI embeddings to connect LLMs to real utility data safely'
             ],
             tech: ['Python', 'OpenAI Embeddings', 'Time-Series Analysis', 'LLMs'],

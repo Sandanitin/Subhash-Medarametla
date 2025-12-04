@@ -7,44 +7,44 @@ const Hero = () => {
     const [hoveredSkill, setHoveredSkill] = useState(null);
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const { scrollY } = useScroll();
-    
-    const profileImage = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80';
-    
+
+    const profileImage = '/profile.jpg';
+
     const titles = [
         'Software Developer',
         'Full-Stack Engineer',
         'AI Integration Specialist',
         'Problem Solver'
     ];
-    
+
     const skills = [
         { icon: <FaCode />, name: 'Full-Stack', color: 'from-blue-500 to-cyan-500', level: 95 },
         { icon: <FaRocket />, name: 'AI Integration', color: 'from-purple-500 to-pink-500', level: 88 },
         { icon: <FaStar />, name: '6+ Years Exp', color: 'from-yellow-500 to-orange-500', level: 92 }
     ];
-    
+
     const stats = [
         { icon: <FaBriefcase />, value: '6+', label: 'Years Experience' },
         { icon: <FaGraduationCap />, value: '2', label: 'Degrees' },
         { icon: <FaCode />, value: '50+', label: 'Projects' }
     ];
-    
+
     const yTransform = useTransform(scrollY, [0, 300], [0, -50]);
     const opacityTransform = useTransform(scrollY, [0, 300], [1, 0]);
-    
+
     useEffect(() => {
         const img = new Image();
         img.src = profileImage;
         img.onload = () => setImageLoaded(true);
     }, [profileImage]);
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentTextIndex((prev) => (prev + 1) % titles.length);
         }, 3000);
         return () => clearInterval(interval);
     }, [titles.length]);
-    
+
     return (
         <section id="home" className="min-h-screen flex items-center justify-center pt-12 px-3 sm:px-4 relative overflow-hidden">
             {/* Enhanced Animated Background */}
@@ -71,7 +71,7 @@ const Hero = () => {
                         }}
                     />
                 ))}
-                
+
                 {/* Main Background Orbs - Smaller for mobile */}
                 <motion.div
                     animate={{
@@ -111,8 +111,8 @@ const Hero = () => {
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-2xl"
                 />
             </div>
-            
-            <motion.div 
+
+            <motion.div
                 style={{ y: yTransform, opacity: opacityTransform }}
                 className="max-w-6xl mx-auto relative z-10 px-2 sm:px-4"
             >
@@ -125,7 +125,7 @@ const Hero = () => {
                         className="text-center lg:text-left order-2 lg:order-1"
                     >
                         {/* Enhanced Greeting - Mobile Optimized */}
-                        <motion.h2 
+                        <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
@@ -135,7 +135,7 @@ const Hero = () => {
                         </motion.h2>
 
                         {/* Enhanced Name - Mobile Optimized */}
-                        <motion.h1 
+                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
@@ -145,7 +145,7 @@ const Hero = () => {
                         </motion.h1>
 
                         {/* Animated Title - Mobile Optimized */}
-                        <motion.h3 
+                        <motion.h3
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
@@ -172,7 +172,7 @@ const Hero = () => {
                             </motion.span>
                         </motion.h3>
                         {/* Enhanced Skills Display - Mobile Optimized */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
@@ -211,7 +211,7 @@ const Hero = () => {
                                 ))}
                             </div>
                         </motion.div>
-                        
+
                         {/* Stats Bar - Mobile Optimized */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -239,7 +239,7 @@ const Hero = () => {
                         </motion.div>
 
                         {/* Enhanced Professional Summary - Mobile Optimized */}
-                        <motion.p 
+                        <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.7 }}
@@ -249,17 +249,13 @@ const Hero = () => {
                         </motion.p>
 
                         {/* Enhanced Contact Info - Mobile Optimized */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.8 }}
                             className="flex flex-wrap items-center justify-center lg:justify-start gap-1 sm:gap-2 mb-4 sm:mb-6"
                         >
-                            <a href="tel:+13143206694" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-300 text-xs">
-                                <FaPhone className="text-cyan-400" />
-                                <span className="text-gray-300 group-hover:text-white transition-colors hidden sm:inline">+1 (314) 320-6694</span>
-                                <span className="text-gray-300 group-hover:text-white transition-colors sm:hidden">Phone</span>
-                            </a>
+
                             <a href="mailto:subhashaj05@gmail.com" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 text-xs">
                                 <FaEnvelope className="text-purple-400" />
                                 <span className="text-gray-300 group-hover:text-white transition-colors">Email</span>
@@ -275,7 +271,7 @@ const Hero = () => {
                         </motion.div>
 
                         {/* Enhanced CTA Buttons - Mobile Optimized */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.9 }}
@@ -311,7 +307,7 @@ const Hero = () => {
                             </motion.button>
                         </motion.div>
                     </motion.div>
-                    
+
                     {/* Right Column - Enhanced Profile Image - Mobile Optimized */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
@@ -333,7 +329,7 @@ const Hero = () => {
                                 }}
                                 className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 rounded-full blur-xl sm:blur-2xl opacity-30"
                             />
-                            
+
                             {/* Profile Image Container - Mobile Optimized */}
                             <motion.div
                                 animate={{
@@ -365,13 +361,13 @@ const Hero = () => {
                                                     />
                                                 </div>
                                             )}
-                                            
+
                                             {/* Enhanced Overlay Gradient */}
                                             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent pointer-events-none" />
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 {/* Enhanced Floating Elements - Mobile Optimized */}
                                 <motion.div
                                     animate={{
@@ -389,7 +385,7 @@ const Hero = () => {
                                 >
                                     <FaStar className="text-white text-xs sm:text-sm animate-pulse" />
                                 </motion.div>
-                                
+
                                 <motion.div
                                     animate={{
                                         y: [0, -8, 0],
@@ -406,7 +402,7 @@ const Hero = () => {
                                 >
                                     <FaCode className="text-white text-xs" />
                                 </motion.div>
-                                
+
                                 <motion.div
                                     animate={{
                                         y: [0, -12, 0],
@@ -427,7 +423,7 @@ const Hero = () => {
                         </div>
                     </motion.div>
                 </div>
-                
+
                 {/* Enhanced Scroll Indicator - Mobile Optimized */}
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -436,7 +432,7 @@ const Hero = () => {
                     className="mt-8 sm:mt-12 text-center"
                 >
                     <div className="inline-flex flex-col items-center gap-1 cursor-pointer group"
-                         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+                        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
                         <motion.div
                             animate={{ y: [0, 3, 0] }}
                             transition={{ duration: 2, repeat: Infinity }}

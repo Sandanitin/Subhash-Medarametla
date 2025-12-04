@@ -11,12 +11,8 @@ const Experience = () => {
             period: 'Dec 2024 – Present',
             project: 'Digital Payments & Account Portal',
             achievements: [
-                'Improved layouts and wording on balance, transaction and payment pages; internal mobile UX scores increased from ~7.2 to ~8.5 in design reviews',
                 'Simplified how the account overview page talks to backend services and removed extra calls, cutting average load time from ~3 seconds to under 2 seconds',
-                'Tightened validation and inline messages on bill-pay and transfer flows, reducing basic "how do I pay" support tickets by 15-20%',
-                'Added small reusable components for forms, alerts and banners, trimming duplicate front-end code by ~20%',
-                'Worked with backend teammates to refine checks and error handling for payment services, bringing noisy "invalid request" errors down by ~33%',
-                'Used application logs, dashboards and AI tools to track recurring payment issues and drive fixes'
+                'Worked with backend teammates to refine checks and error handling for payment services, bringing noisy "invalid request" errors down by ~33%'
             ],
             tools: ['React.js', 'JavaScript', 'Node.js', 'REST APIs', 'HTML/CSS'],
             gradient: 'from-blue-500 to-cyan-500'
@@ -29,10 +25,7 @@ const Experience = () => {
             project: 'E-Commerce Web & Checkout Portal',
             achievements: [
                 'Worked on listing, search and product detail pages for selected categories; add-to-cart drop-offs decreased by 10-12% in analytics',
-                'Cleaned up state handling and cut extra network calls on search and listing views, reducing average load time from ~2.8 seconds to under 2 seconds',
-                'Fixed responsive issues using HTML/CSS and common UI frameworks; layout bugs on assigned pages dropped by ~30% over a few sprints',
-                'Created reusable components like product cards, price tags and promo banners, reducing duplicate UI code by ~20%',
-                'Helped debug slow "view product" and "add to cart" actions, improving response times during sale periods by ~200-300ms'
+                'Cleaned up state handling and cut extra network calls on search and listing views, reducing average load time from ~2.8 seconds to under 2 seconds'
             ],
             tools: ['React.js', 'JavaScript', 'HTML/CSS', 'Bootstrap', 'REST APIs'],
             gradient: 'from-purple-500 to-pink-500'
@@ -44,8 +37,6 @@ const Experience = () => {
             period: 'Aug 2018 – Jan 2021',
             project: 'Enterprise Web Dashboards & Workflows',
             achievements: [
-                'Worked with product managers, designers and testers to add and refine React features; UX change requests on module went down by ~20% over a few releases',
-                'Developed frontend screens using React, JavaScript, HTML and CSS; page performance improved by ~25% after removing heavy parts',
                 'Connected the UI with REST and GraphQL APIs and fixed data-handling issues, reducing API-related UI errors in logs by ~30%',
                 'Helped set up and tune CI/CD pipelines in Azure DevOps for the frontend; manual deployment time dropped by ~40%'
             ],

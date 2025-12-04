@@ -38,7 +38,7 @@ function App() {
                 with a strong focus on creating seamless user experiences and robust backend systems using React, Node.js, and Java/Spring Boot.
               </p>
               <p>
-                Currently, I'm focused on leveraging Large Language Models (LLMs) and RAG architectures to build intelligent agents that can understand and interact with complex data.
+                As a recent Master's graduate, I am focused on leveraging Large Language Models (LLMs) and RAG architectures to build intelligent agents that can understand and interact with complex data.
                 I'm passionate about bridging the gap between traditional software engineering and modern AI capabilities.
               </p>
               <p className="text-cyan-400 italic">
