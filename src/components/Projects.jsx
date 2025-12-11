@@ -1,9 +1,24 @@
 import React from 'react';
-import { FaHospital, FaBolt } from 'react-icons/fa';
+import { FaHospital, FaBolt, FaShoppingBag, FaExternalLinkAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
+        {
+            title: 'AJ-Mana Style',
+            period: 'Dec 2024',
+            type: 'Freelance Project',
+            description: 'E-commerce platform for handcrafted sarees featuring timeless elegance and traditional craftsmanship.',
+            features: [
+                'Built responsive e-commerce website with product catalogs and modern UI/UX',
+                'Implemented WhatsApp integration for seamless customer communication',
+                'Deployed on Vercel with optimized performance and SEO'
+            ],
+            tech: ['React', 'CSS3', 'JavaScript', 'Vercel', 'Responsive Design'],
+            gradient: 'from-purple-500 to-pink-500',
+            icon: <FaShoppingBag className="text-3xl" />,
+            liveLink: 'https://aj-mana-style.vercel.app/'
+        },
         {
             title: 'AI-Integrated Cancer Prediction & Hospital Portal',
             period: 'Jan 2025 – May 2025',
@@ -101,6 +116,19 @@ const Projects = () => {
                                     </span>
                                 ))}
                             </div>
+
+                            {/* Live Link */}
+                            {project.liveLink && (
+                                <a
+                                    href={project.liveLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r ${project.gradient} text-white font-medium text-sm hover:scale-105 transition-transform duration-200 w-fit`}
+                                >
+                                    <FaExternalLinkAlt className="text-xs" />
+                                    View Live
+                                </a>
+                            )}
                         </motion.div>
                     ))}
                 </div>
