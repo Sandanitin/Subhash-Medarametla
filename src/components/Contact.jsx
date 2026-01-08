@@ -12,10 +12,18 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        // Create mailto link with prefilled data
+        const recipient = 'subhashaj05@gmail.com';
+        const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
+        const body = encodeURIComponent(
+            `Name: ${formData.name}\n` +
+            `Email: ${formData.email}\n\n` +
+            `Message:\n${formData.message}`
+        );
+
+        // Open email client with prefilled data
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
     };
 
     const handleChange = (e) => {
