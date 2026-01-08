@@ -5,43 +5,52 @@ import { motion } from 'framer-motion';
 const Experience = () => {
     const experiences = [
         {
-            company: 'Wells Fargo',
+            company: 'T-Mobile',
             location: 'Remote',
             role: 'Software Developer',
-            period: 'Dec 2024 – Present',
-            project: 'Digital Payments & Account Portal',
+            period: '2024 – Present',
+            project: 'Plans & Add-Ons Management',
+            description: 'T-Mobile is a major U.S. wireless carrier with customers managing lines and plans across web & mobile. Team project to improve the area where customers review plans, manage lines and add-ons, payment fixes for customers, across both the UI and backend services.',
             achievements: [
-                'Simplified how the account overview page talks to backend services and removed extra calls, cutting average load time from ~3 seconds to under 2 seconds',
-                'Worked with backend teammates to refine checks and error handling for payment services, bringing noisy "invalid request" errors down by ~33%'
+                'Improved layout and wording on plan and add-ons pages in React, lifting internal UX review scores from about 7.1 to around 8.3 over a few releases.',
+                'Added confirmations and warnings for plan, roaming and international changes, cutting "I changed the wrong thing" tickets for that area by 15–20%.',
+                'Removed duplicate calls in Node.js and Java/Spring Boot plan APIs, trimming response times on key screens by 200–300 ms in monitoring.',
+                'Tightened validation and error handling for plan and add-on APIs on AWS, reducing noisy 4xx/5xx errors on those routes by one-third.',
+                'Created reusable plan cards, add-on tiles and summary banners backed by shared data calls, trimming duplicate frontend code by 20%.',
+                'Used logs, dashboards and a small log clustering/embeddings helper to group similar plan-change issues and cut triage time for recurring problems by 20%.'
             ],
-            tools: ['React.js', 'JavaScript', 'Node.js', 'REST APIs', 'HTML/CSS'],
-            gradient: 'from-blue-500 to-cyan-500'
+            tools: ['React.js', 'JavaScript', 'Node.js', 'Java/Spring Boot', 'AWS', 'REST APIs'],
+            gradient: 'from-pink-500 to-rose-500'
         },
         {
-            company: 'Flipkart',
-            location: 'Bangalore, India',
-            role: 'Software Developer',
-            period: 'Feb 2021 – July 2023',
-            project: 'E-Commerce Web & Checkout Portal',
-            achievements: [
-                'Worked on listing, search and product detail pages for selected categories; add-to-cart drop-offs decreased by 10-12% in analytics',
-                'Cleaned up state handling and cut extra network calls on search and listing views, reducing average load time from ~2.8 seconds to under 2 seconds'
-            ],
-            tools: ['React.js', 'JavaScript', 'HTML/CSS', 'Bootstrap', 'REST APIs'],
-            gradient: 'from-purple-500 to-pink-500'
-        },
-        {
-            company: 'Accenture',
+            company: 'C2N IT Services',
             location: 'Hyderabad, India',
             role: 'Software Developer',
-            period: 'Aug 2018 – Jan 2021',
-            project: 'Enterprise Web Dashboards & Workflows',
-            achievements: [
-                'Connected the UI with REST and GraphQL APIs and fixed data-handling issues, reducing API-related UI errors in logs by ~30%',
-                'Helped set up and tune CI/CD pipelines in Azure DevOps for the frontend; manual deployment time dropped by ~40%'
+            period: 'Jul 2018 – Jun 2023',
+            projects: [
+                {
+                    name: 'Digital Payments & Account Portal',
+                    description: 'Contributed to a digital banking portal for balances, transactions, bill pay, UPI/NEFT/IMPS transfers, and payee management across UI and backend services.'
+                },
+                {
+                    name: 'Retail E-Commerce Web & Checkout',
+                    description: 'Team project building an e-commerce site with product listings, product pages, cart, and checkout for smooth ordering on desktop and mobile.'
+                }
             ],
-            tools: ['React.js', 'JavaScript', 'REST', 'GraphQL', 'Azure DevOps', 'HTML/CSS'],
-            gradient: 'from-green-500 to-teal-500'
+            achievements: [
+                'Worked on dashboard, transaction and payment pages using React/JavaScript, with clearer labels for UPI, NEFT, card payments, which reduced checkout drop-off on those screens.',
+                'Simplified UPI and NEFT transfer flows with better inline errors, which reduced basic "payment failed, what next?" tickets in that area by 15–18%.',
+                'Built UI screens to surface flagged UPI, NEFT and IMPS transfers, show risk reasons, scores and support audit review with searchable logs.',
+                'Maintained Java/Spring Boot and Node.js APIs for payments and transfers, removing redundant calls and making key endpoints 200–250 ms faster.',
+                'Tuned a few queries in PostgreSQL/MySQL for mini-statements and transaction search by adding indexes and cleaning filters, which reduced slow-query alerts during peak hours.',
+                'Built reusable widgets for payees, recent payments and bank selection across UPI/NEFT/bill-pay, trimming duplicate frontend code by 20%.',
+                'Built product listing and detail pages in React and JavaScript and improved click-through rate from listing to product detail by 8–10%.',
+                'Fixed mobile/responsive issues with HTML/CSS/Bootstrap on key shopping pages, and layout bugs reported by QA dropped by 25–30% over a few sprints.',
+                'Created reusable pieces for product cards, filter chips and offer banners so the team could spin up new sale or category pages faster, dev effort dropped to 20–25%.',
+                'Updated cart and checkout APIs in Node.js and Java/Spring Boot to handle coupons and stock errors more cleanly, cutting 4xx/5xx errors on those routes by one-third.'
+            ],
+            tools: ['React.js', 'JavaScript', 'Node.js', 'Java/Spring Boot', 'PostgreSQL', 'MySQL', 'HTML/CSS', 'Bootstrap', 'REST APIs'],
+            gradient: 'from-blue-500 to-cyan-500'
         }
     ];
 
@@ -57,7 +66,7 @@ const Experience = () => {
                 >
                     <h2 className="section-title">Professional Experience</h2>
                     <p className="section-subtitle">
-                        6+ years of experience across banking, e-commerce, and enterprise development
+                        5+ years of experience across Telecom (T-Mobile), Banking, and E-commerce development
                     </p>
                 </motion.div>
 
@@ -84,6 +93,18 @@ const Experience = () => {
                                                 Project: {exp.project}
                                             </p>
                                         )}
+                                        {/* Multiple Projects */}
+                                        {exp.projects && (
+                                            <div className="mb-3">
+                                                <p className="text-sm text-purple-400 font-semibold uppercase tracking-wide mb-2">Key Projects:</p>
+                                                {exp.projects.map((project, pIdx) => (
+                                                    <div key={pIdx} className="mb-2 pl-3 border-l-2 border-purple-400/30">
+                                                        <p className="text-cyan-400 font-medium text-sm">{project.name}</p>
+                                                        <p className="text-gray-400 text-sm">{project.description}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                         <h3 className="text-2xl font-bold text-white mb-2">{exp.role}</h3>
                                         <div className="flex items-center gap-2 text-cyan-400 mb-2">
                                             <FaBuilding />
@@ -102,13 +123,21 @@ const Experience = () => {
                                     </div>
                                 </div>
 
+                                {/* Description */}
+                                {exp.description && (
+                                    <p className="text-gray-400 mb-4 text-sm italic border-l-2 border-cyan-500/30 pl-4">
+                                        {exp.description}
+                                    </p>
+                                )}
+
                                 {/* Achievements */}
                                 <div className="mb-6">
+                                    <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wide mb-3">Responsibilities & Achievements</h4>
                                     <ul className="space-y-3">
                                         {exp.achievements.map((achievement, achievementIdx) => (
                                             <li key={achievementIdx} className="flex items-start gap-3 text-gray-300">
                                                 <FaCheckCircle className="text-green-400 mt-1 flex-shrink-0" />
-                                                <span>{achievement}</span>
+                                                <span className="text-sm">{achievement}</span>
                                             </li>
                                         ))}
                                     </ul>

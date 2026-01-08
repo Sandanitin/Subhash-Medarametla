@@ -1,13 +1,13 @@
 import React from 'react';
-import { FaHeart, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { icon: <FaLinkedin />, link: '#', name: 'LinkedIn' },
-        { icon: <FaGithub />, link: '#', name: 'GitHub' },
-
+        { icon: <FaLinkedin />, link: 'https://www.linkedin.com/in/subhash03', name: 'LinkedIn' },
+        { icon: <FaEnvelope />, link: 'mailto:subhashaj05@gmail.com', name: 'Email' },
+        { icon: <FaPhone />, link: 'tel:+13143206694', name: 'Phone' },
     ];
 
     return (
@@ -17,20 +17,11 @@ const Footer = () => {
                     {/* Copyright */}
                     <div className="text-center md:text-left">
                         <p className="text-gray-400">
-                            © 2025 <span className="gradient-text font-semibold">Subhash Medarametla</span>. All rights reserved.
+                            © {currentYear} <span className="gradient-text font-semibold">Subhash Chandrabosu Medarametla</span>. All rights reserved.
                         </p>
                         <p className="text-gray-500 text-sm mt-1">
-                            Designed and Developed by{" "}
-                            <a
-                                href="https://www.vikrin.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-cyan-400 font-semibold hover:underline"
-                            >
-                                Vikrin
-                            </a>
+                            Software Developer | Full-Stack & AI Integration Specialist
                         </p>
-
                     </div>
 
                     {/* Social Links */}
@@ -39,8 +30,8 @@ const Footer = () => {
                             <a
                                 key={idx}
                                 href={social.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                target={social.link.startsWith('http') ? '_blank' : undefined}
+                                rel={social.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                                 className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:scale-110 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-purple-500 hover:text-white transition-all duration-300"
                                 aria-label={social.name}
                             >

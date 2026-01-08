@@ -4,31 +4,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Education = () => {
     const [hoveredCard, setHoveredCard] = useState(null);
-    
+
     const educationData = [
         {
             degree: "Master's in Information Systems",
-            status: 'GPA: 3.83/4.0',
             institution: 'Saint Louis University, Saint Louis, MO, USA',
-            year: 'Aug 2023 - May 2025',
+            year: 'Aug 2023 – May 2025',
             icon: <FaGraduationCap className="text-4xl" />,
             gradient: 'from-purple-500 to-pink-500',
             image: 'https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
             logo: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80',
-            highlights: ['Advanced Database Systems', 'Data Analytics', 'Cloud Computing', 'Machine Learning'],
-            achievements: ['Dean\'s List', 'Research Assistant']
+            highlights: ['AI & LLM Integration', 'OpenAI & Embeddings', 'RAG Architecture', 'Cloud Computing', 'Data Analytics'],
+            achievements: ['AI Research Projects', 'Full-Stack Development Focus']
         },
         {
             degree: "Bachelor's in Computer Science",
-            status: 'GPA: 8.9/10',
             institution: 'India',
-            year: 'July 2014 - May 2018',
+            year: 'July 2014 – May 2018',
             icon: <FaUniversity className="text-4xl" />,
             gradient: 'from-blue-500 to-cyan-500',
             image: 'https://images.unsplash.com/photo-1581078426770-6d336e5de7bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
             logo: 'https://images.unsplash.com/photo-1568667256549-094345257637?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80',
-            highlights: ['Data Structures', 'Algorithms', 'Web Development', 'Database Management'],
-            achievements: ['First Class with Distinction', 'Technical Lead']
+            highlights: ['Data Structures', 'Algorithms', 'Web Development', 'Database Management', 'Object-Oriented Programming'],
+            achievements: ['Strong Foundation in CS Fundamentals', 'Software Development Projects']
         }
     ];
 
@@ -48,16 +46,16 @@ const Education = () => {
                         <FaGraduationCap className="text-3xl text-cyan-400" />
                         <div className="h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent w-20"></div>
                     </div>
-                    <h2 className="section-title">Education Journey</h2>
+                    <h2 className="section-title">Education</h2>
                     <p className="section-subtitle max-w-2xl mx-auto">
-                        My academic path and continuous learning journey in technology and information systems
+                        Academic foundation with a focus on AI and modern software development
                     </p>
                 </motion.div>
 
                 <div className="relative">
                     {/* Timeline Line */}
                     <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-500/50 to-purple-500/50"></div>
-                    
+
                     <div className="space-y-12">
                         {educationData.map((edu, idx) => (
                             <motion.div
@@ -77,7 +75,7 @@ const Education = () => {
                                         className="w-full h-full bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full"
                                     />
                                 </div>
-                                
+
                                 {/* Education Card */}
                                 <motion.div
                                     whileHover={{ scale: 1.02, y: -5 }}
@@ -87,14 +85,14 @@ const Education = () => {
                                     <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-700/50 hover:border-cyan-500/50 transition-all duration-500">
                                         {/* Background Image */}
                                         <div className="absolute inset-0">
-                                            <img 
-                                                src={edu.image} 
+                                            <img
+                                                src={edu.image}
                                                 alt={`${edu.degree} background`}
                                                 className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-500"
                                             />
                                             <div className={`absolute inset-0 bg-gradient-to-br ${edu.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
                                         </div>
-                                        
+
                                         {/* Content */}
                                         <div className="relative p-8">
                                             {/* Header */}
@@ -102,8 +100,8 @@ const Education = () => {
                                                 <div className="flex items-center gap-4">
                                                     {/* University Logo */}
                                                     <div className="relative">
-                                                        <img 
-                                                            src={edu.logo} 
+                                                        <img
+                                                            src={edu.logo}
                                                             alt={`${edu.institution} logo`}
                                                             className="w-12 h-12 rounded-full object-cover border-2 border-cyan-500/50"
                                                         />
@@ -118,26 +116,18 @@ const Education = () => {
                                                     <span className="text-sm font-medium">{edu.year}</span>
                                                 </div>
                                             </div>
-                                            
+
                                             {/* Degree */}
                                             <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
                                                 {edu.degree}
                                             </h3>
-                                            
+
                                             {/* Institution */}
                                             <p className="text-gray-300 mb-4 flex items-center gap-2">
                                                 <FaUniversity className="text-cyan-500" />
                                                 {edu.institution}
                                             </p>
-                                            
-                                            {/* Status Badge */}
-                                            {edu.status && (
-                                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 mb-6">
-                                                    <FaMedal className="text-yellow-400" />
-                                                    <span className="text-yellow-400 font-semibold">{edu.status}</span>
-                                                </div>
-                                            )}
-                                            
+
                                             {/* Expandable Details */}
                                             <AnimatePresence>
                                                 {hoveredCard === idx && (
@@ -151,7 +141,7 @@ const Education = () => {
                                                         <div className="pt-4 border-t border-gray-700/50">
                                                             <div className="mb-4">
                                                                 <h4 className="text-sm font-semibold text-cyan-400 mb-2 flex items-center gap-2">
-                                                                    <FaBook /> Key Courses
+                                                                    <FaBook /> Key Focus Areas
                                                                 </h4>
                                                                 <div className="flex flex-wrap gap-2">
                                                                     {edu.highlights.map((highlight, i) => (
@@ -161,10 +151,10 @@ const Education = () => {
                                                                     ))}
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div>
                                                                 <h4 className="text-sm font-semibold text-cyan-400 mb-2 flex items-center gap-2">
-                                                                    <FaAward /> Achievements
+                                                                    <FaAward /> Highlights
                                                                 </h4>
                                                                 <div className="flex flex-wrap gap-2">
                                                                     {edu.achievements.map((achievement, i) => (
@@ -178,7 +168,7 @@ const Education = () => {
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
-                                            
+
                                             {/* Hover Indicator */}
                                             <div className="flex items-center justify-center mt-4 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                 <span className="text-sm mr-2">View details</span>

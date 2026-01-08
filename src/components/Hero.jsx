@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaCode, FaRocket, FaStar, FaDownload, FaArrowRight, FaMouse, FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaCode, FaRocket, FaStar, FaDownload, FaArrowRight, FaMouse, FaBriefcase, FaGraduationCap, FaMapMarkerAlt } from 'react-icons/fa';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
@@ -20,13 +20,13 @@ const Hero = () => {
     const skills = [
         { icon: <FaCode />, name: 'Full-Stack', color: 'from-blue-500 to-cyan-500', level: 95 },
         { icon: <FaRocket />, name: 'AI Integration', color: 'from-purple-500 to-pink-500', level: 88 },
-        { icon: <FaStar />, name: '6+ Years Exp', color: 'from-yellow-500 to-orange-500', level: 92 }
+        { icon: <FaStar />, name: '5+ Years Exp', color: 'from-yellow-500 to-orange-500', level: 92 }
     ];
 
     const stats = [
-        { icon: <FaBriefcase />, value: '6+', label: 'Years Experience' },
+        { icon: <FaBriefcase />, value: '5+', label: 'Years Experience' },
         { icon: <FaGraduationCap />, value: '2', label: 'Degrees' },
-        { icon: <FaCode />, value: '50+', label: 'Projects' }
+        { icon: <FaCode />, value: '20+', label: 'Projects' }
     ];
 
     const yTransform = useTransform(scrollY, [0, 300], [0, -50]);
@@ -141,7 +141,7 @@ const Hero = () => {
                             transition={{ duration: 0.8, delay: 0.3 }}
                             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4"
                         >
-                            <span className="gradient-text">Subhash Medarametla</span>
+                            <span className="gradient-text">Subhash Chandrabosu Medarametla</span>
                         </motion.h1>
 
                         {/* Animated Title - Mobile Optimized */}
@@ -245,8 +245,19 @@ const Hero = () => {
                             transition={{ duration: 0.8, delay: 0.7 }}
                             className="text-sm sm:text-base text-gray-400 max-w-xs sm:max-w-md md:max-w-lg mx-auto lg:mx-0 mb-4 sm:mb-6 leading-relaxed"
                         >
-                            Passionate developer with <span className="text-cyan-400 font-semibold">6+ years</span> building scalable web apps. Expert in <span className="text-purple-400 font-semibold">full-stack</span> & <span className="text-purple-400 font-semibold">AI integration</span>.
+                            Passionate developer with <span className="text-cyan-400 font-semibold">5+ years</span> across Telecom, Banking & E-commerce. Expert in <span className="text-purple-400 font-semibold">React, Node.js, Java/Spring Boot</span> & <span className="text-purple-400 font-semibold">AI integration with LLMs & RAG</span>.
                         </motion.p>
+
+                        {/* Location Badge */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.75 }}
+                            className="flex items-center justify-center lg:justify-start gap-2 mb-4 text-gray-400"
+                        >
+                            <FaMapMarkerAlt className="text-cyan-400" />
+                            <span className="text-sm">St. Louis, MO | Open to relocate</span>
+                        </motion.div>
 
                         {/* Enhanced Contact Info - Mobile Optimized */}
                         <motion.div
@@ -255,18 +266,17 @@ const Hero = () => {
                             transition={{ duration: 0.8, delay: 0.8 }}
                             className="flex flex-wrap items-center justify-center lg:justify-start gap-1 sm:gap-2 mb-4 sm:mb-6"
                         >
-
+                            <a href="tel:+13143206694" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 text-xs">
+                                <FaPhone className="text-green-400" />
+                                <span className="text-gray-300 group-hover:text-white transition-colors">+1 (314) 320-6694</span>
+                            </a>
                             <a href="mailto:subhashaj05@gmail.com" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 text-xs">
                                 <FaEnvelope className="text-purple-400" />
                                 <span className="text-gray-300 group-hover:text-white transition-colors">Email</span>
                             </a>
-                            <a href="https://www.linkedin.com/in/subhashchandrabosu" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 text-xs">
+                            <a href="https://www.linkedin.com/in/subhash03" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 text-xs">
                                 <FaLinkedin className="text-blue-400" />
                                 <span className="text-gray-300 group-hover:text-white transition-colors">LinkedIn</span>
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-1 px-2 py-1 rounded-full bg-gray-800/50 border border-gray-700/50 hover:border-gray-500/50 transition-all duration-300 text-xs">
-                                <FaGithub className="text-gray-400" />
-                                <span className="text-gray-300 group-hover:text-white transition-colors">GitHub</span>
                             </a>
                         </motion.div>
 
@@ -349,7 +359,7 @@ const Hero = () => {
                                             {imageLoaded ? (
                                                 <img
                                                     src={profileImage}
-                                                    alt="Subhash Medarametla"
+                                                    alt="Subhash Chandrabosu Medarametla"
                                                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                                                 />
                                             ) : (

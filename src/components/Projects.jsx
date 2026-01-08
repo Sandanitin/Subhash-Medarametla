@@ -1,20 +1,21 @@
 import React from 'react';
-import { FaHospital, FaBolt, FaShoppingBag, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaHospital, FaBolt, FaShoppingBag, FaExternalLinkAlt, FaBrain, FaRobot } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
         {
-            title: 'AJ-Mana Style',
-            period: 'Dec 2024',
-            type: 'Freelance Project',
-            description: 'E-commerce platform for handcrafted sarees featuring timeless elegance and traditional craftsmanship.',
+            title: 'E-commerce Website (Portfolio Project)',
+            period: 'Dec 2025 – Present',
+            type: 'Portfolio Project',
+            description: 'Built a responsive luxury fashion storefront in React with a Python REST API powering product catalog, categories, and product detail pages.',
             features: [
-                'Built responsive e-commerce website with product catalogs and modern UI/UX',
-                'Implemented WhatsApp integration for seamless customer communication',
-                'Deployed on Vercel with optimized performance and SEO'
+                'Developed responsive React frontend with modern UI/UX design',
+                'Built Python REST API for product catalog management',
+                'API-driven data rendering for smooth browsing experience',
+                'Deployed frontend on Vercel with optimized performance'
             ],
-            tech: ['React', 'CSS3', 'JavaScript', 'Vercel', 'Responsive Design'],
+            tech: ['React', 'Python', 'REST API', 'Vercel', 'Responsive Design'],
             gradient: 'from-purple-500 to-pink-500',
             icon: <FaShoppingBag className="text-3xl" />,
             liveLink: 'https://aj-mana-style.vercel.app/'
@@ -23,11 +24,15 @@ const Projects = () => {
             title: 'AI-Integrated Cancer Prediction & Hospital Portal',
             period: 'Jan 2025 – May 2025',
             type: 'Academic Project',
-            description: 'AI-integrated hospital portal with patient records, cancer-risk screening, and a policy/help chat.',
+            description: 'AI-integrated hospital portal with patient records, cancer-risk screening (Python CNN with Grad-CAM), and a policy/help chat using OpenAI with embeddings + vector search (RAG) over hospital PDFs.',
             features: [
-                'Built a policy/help chat using OpenAI with embeddings + vector search (RAG) over hospital PDFs'
+                'Patient records management system',
+                'Cancer-risk screening using Python CNN with Grad-CAM visualization',
+                'Policy/help chat using OpenAI with embeddings + vector search (RAG) over hospital PDFs',
+                'Secured via Spring Boot REST + OAuth2',
+                'Instrumented with basic telemetry (research/education use)'
             ],
-            tech: ['Python', 'Spring Boot', 'OpenAI API', 'RAG', 'React', 'OAuth2'],
+            tech: ['Python', 'CNN', 'Grad-CAM', 'Spring Boot', 'OpenAI API', 'RAG', 'Vector Search', 'OAuth2'],
             gradient: 'from-pink-500 to-rose-500',
             icon: <FaHospital className="text-3xl" />
         },
@@ -35,11 +40,15 @@ const Projects = () => {
             title: 'AI Home Utility Optimization Agent',
             period: 'Jan 2025 – Mar 2025',
             type: 'Academic Project',
-            description: 'Python-based home utility agent using OpenAI embeddings and time-series analysis.',
+            description: 'Python-based home utility agent using OpenAI embeddings and simple time-series analysis on tariff and usage data to optimize household utility costs.',
             features: [
-                'Utilized OpenAI embeddings to connect LLMs to real utility data safely'
+                'Predict monthly utility bills using AI analysis',
+                'Suggest off-peak schedules for cost savings',
+                'Alert users when electricity, water, or gas consumption looks abnormal',
+                'Time-series analysis on tariff and usage data',
+                'OpenAI embeddings for intelligent data processing'
             ],
-            tech: ['Python', 'OpenAI Embeddings', 'Time-Series Analysis', 'LLMs'],
+            tech: ['Python', 'OpenAI Embeddings', 'Time-Series Analysis', 'LLMs', 'Data Analytics'],
             gradient: 'from-amber-500 to-orange-500',
             icon: <FaBolt className="text-3xl" />
         }
@@ -55,13 +64,13 @@ const Projects = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Academic Projects</h2>
+                    <h2 className="section-title">Projects</h2>
                     <p className="section-subtitle">
-                        Recent work in AI integration and Full-Stack Development
+                        Recent work in AI integration, RAG architectures, and Full-Stack Development
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {projects.map((project, idx) => (
                         <motion.div
                             key={idx}
@@ -82,7 +91,7 @@ const Projects = () => {
                                         <span className="text-sm text-cyan-400 font-medium">{project.type}</span>
                                     </div>
                                 </div>
-                                <span className="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700">
+                                <span className="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700 whitespace-nowrap">
                                     {project.period}
                                 </span>
                             </div>

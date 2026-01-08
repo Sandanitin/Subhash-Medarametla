@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPhone, FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaLinkedin, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
@@ -26,7 +26,13 @@ const Contact = () => {
     };
 
     const contactInfo = [
-
+        {
+            icon: <FaPhone className="text-2xl" />,
+            label: 'Phone',
+            value: '+1 (314) 320-6694',
+            link: 'tel:+13143206694',
+            gradient: 'from-green-500 to-teal-500'
+        },
         {
             icon: <FaEnvelope className="text-2xl" />,
             label: 'Email',
@@ -37,9 +43,16 @@ const Contact = () => {
         {
             icon: <FaLinkedin className="text-2xl" />,
             label: 'LinkedIn',
-            value: 'View Profile',
-            link: 'https://www.linkedin.com/in/subhashchandrabosu',
+            value: 'linkedin.com/in/subhash03',
+            link: 'https://www.linkedin.com/in/subhash03',
             gradient: 'from-purple-500 to-pink-500'
+        },
+        {
+            icon: <FaMapMarkerAlt className="text-2xl" />,
+            label: 'Location',
+            value: 'St. Louis, MO | Open to Relocate',
+            link: null,
+            gradient: 'from-orange-500 to-red-500'
         }
     ];
 
@@ -55,7 +68,7 @@ const Contact = () => {
                 >
                     <h2 className="section-title">Get In Touch</h2>
                     <p className="section-subtitle">
-                        Let's discuss how I can help with your software development needs
+                        Looking for a full-stack role building end-to-end features with a practical AI edge
                     </p>
                 </motion.div>
 
@@ -71,32 +84,49 @@ const Contact = () => {
 
                         <div className="space-y-6 mb-8">
                             {contactInfo.map((info, idx) => (
-                                <a
-                                    key={idx}
-                                    href={info.link}
-                                    target={info.link.startsWith('http') ? '_blank' : undefined}
-                                    rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                    className="glass-card p-6 flex items-center gap-4 hover:scale-105 transition-transform duration-300 block"
-                                >
-                                    <div className={`icon-wrapper bg-gradient-to-r ${info.gradient} p-4`}>
-                                        {info.icon}
+                                info.link ? (
+                                    <a
+                                        key={idx}
+                                        href={info.link}
+                                        target={info.link.startsWith('http') ? '_blank' : undefined}
+                                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                        className="glass-card p-6 flex items-center gap-4 hover:scale-105 transition-transform duration-300 block"
+                                    >
+                                        <div className={`icon-wrapper bg-gradient-to-r ${info.gradient} p-4`}>
+                                            {info.icon}
+                                        </div>
+                                        <div>
+                                            <div className="text-gray-400 text-sm mb-1">{info.label}</div>
+                                            <div className="text-white font-semibold">{info.value}</div>
+                                        </div>
+                                    </a>
+                                ) : (
+                                    <div
+                                        key={idx}
+                                        className="glass-card p-6 flex items-center gap-4"
+                                    >
+                                        <div className={`icon-wrapper bg-gradient-to-r ${info.gradient} p-4`}>
+                                            {info.icon}
+                                        </div>
+                                        <div>
+                                            <div className="text-gray-400 text-sm mb-1">{info.label}</div>
+                                            <div className="text-white font-semibold">{info.value}</div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div className="text-gray-400 text-sm mb-1">{info.label}</div>
-                                        <div className="text-white font-semibold">{info.value}</div>
-                                    </div>
-                                </a>
+                                )
                             ))}
                         </div>
 
-                        {/* Fun Fact */}
+                        {/* Quick Facts */}
                         <div className="glass-card p-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border-purple-500/30">
                             <h4 className="text-xl font-bold text-white mb-3">💡 Quick Facts</h4>
                             <ul className="space-y-2 text-gray-300">
-                                <li>✨ 6+ years in Software Development</li>
+                                <li>✨ 5+ years in Software Development</li>
+                                <li>🏢 Experience: T-Mobile, C2N IT Services</li>
                                 <li>🏆 Full-Stack & AI Integration Specialist</li>
-                                <li>📚 Master's in Information Systems</li>
-                                <li>🌍 Experience in Banking & E-Commerce</li>
+                                <li>📚 Master's in Information Systems (Saint Louis University)</li>
+                                <li>🌍 Telecom, Banking & E-Commerce domains</li>
+                                <li>🤖 Focused on LLMs, RAG & AI-driven solutions</li>
                             </ul>
                         </div>
                     </motion.div>
@@ -155,7 +185,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         required
                                         className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors duration-300"
-                                        placeholder="Project Consultation"
+                                        placeholder="Job Opportunity / Collaboration"
                                     />
                                 </div>
 
@@ -171,7 +201,7 @@ const Contact = () => {
                                         required
                                         rows="5"
                                         className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors duration-300 resize-none"
-                                        placeholder="Tell me about your project..."
+                                        placeholder="Tell me about the opportunity or project..."
                                     />
                                 </div>
 

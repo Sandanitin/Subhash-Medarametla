@@ -1,10 +1,10 @@
 import React from 'react';
 import {
     FaCloud, FaCode, FaChartLine, FaRobot, FaServer,
-    FaDocker, FaGitAlt, FaAws, FaWindows
+    FaDocker, FaGitAlt, FaAws, FaDatabase
 } from 'react-icons/fa';
 import {
-    SiJenkins, SiKubernetes
+    SiJenkins, SiKubernetes, SiPostgresql, SiMongodb, SiRedis, SiApachekafka
 } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
@@ -19,6 +19,7 @@ const Skills = () => {
                 { name: 'Python', level: 90 },
                 { name: 'Java', level: 88 },
                 { name: 'C++', level: 80 },
+                { name: 'HTML/CSS', level: 93 },
             ]
         },
         {
@@ -28,7 +29,8 @@ const Skills = () => {
             skills: [
                 { name: 'React.js', level: 95 },
                 { name: 'GraphQL', level: 82 },
-                { name: 'Tailwind CSS', level: 88 },
+                { name: 'Bootstrap', level: 88 },
+                { name: 'Tailwind CSS', level: 85 },
             ]
         },
         {
@@ -40,6 +42,7 @@ const Skills = () => {
                 { name: 'Spring Boot', level: 90 },
                 { name: 'REST APIs', level: 95 },
                 { name: 'Microservices', level: 85 },
+                { name: 'JPA/Hibernate', level: 82 },
             ]
         },
         {
@@ -48,9 +51,9 @@ const Skills = () => {
             gradient: 'from-orange-500 to-red-500',
             skills: [
                 { name: 'OpenAI API', level: 88 },
-                { name: 'LLM Integration', level: 85 },
-                { name: 'RAG & Embeddings', level: 82 },
-                { name: 'Prompt Engineering', level: 87 },
+                { name: 'Embeddings & Vector Search', level: 85 },
+                { name: 'RAG Architecture', level: 82 },
+                { name: 'Prompt Design & Guardrails', level: 87 },
             ]
         },
         {
@@ -59,18 +62,20 @@ const Skills = () => {
             gradient: 'from-indigo-500 to-purple-500',
             skills: [
                 { name: 'AWS', icon: <FaAws />, level: 90 },
-                { name: 'Google Cloud', level: 80 },
+                { name: 'Google Cloud Platform (GCP)', level: 80 },
             ]
         },
         {
             title: 'Data & Messaging',
-            icon: <FaServer className="text-4xl" />,
+            icon: <FaDatabase className="text-4xl" />,
             gradient: 'from-yellow-500 to-orange-500',
             skills: [
-                { name: 'PostgreSQL', level: 88 },
-                { name: 'MongoDB', level: 85 },
-                { name: 'Redis', level: 82 },
-                { name: 'Kafka', level: 80 },
+                { name: 'PostgreSQL', icon: <SiPostgresql />, level: 88 },
+                { name: 'MySQL', level: 88 },
+                { name: 'DynamoDB', level: 80 },
+                { name: 'MongoDB', icon: <SiMongodb />, level: 85 },
+                { name: 'Redis', icon: <SiRedis />, level: 82 },
+                { name: 'Kafka', icon: <SiApachekafka />, level: 80 },
             ]
         },
         {
@@ -80,8 +85,8 @@ const Skills = () => {
             skills: [
                 { name: 'Docker', icon: <FaDocker />, level: 90 },
                 { name: 'Kubernetes', icon: <SiKubernetes />, level: 85 },
+                { name: 'Git/GitLab', icon: <FaGitAlt />, level: 92 },
                 { name: 'Jenkins', icon: <SiJenkins />, level: 88 },
-                { name: 'Git', icon: <FaGitAlt />, level: 92 },
             ]
         },
         {
@@ -91,6 +96,9 @@ const Skills = () => {
             skills: [
                 { name: 'JUnit', level: 88 },
                 { name: 'Jest', level: 85 },
+                { name: 'Cypress', level: 80 },
+                { name: 'Mocha', level: 78 },
+                { name: 'SonarQube', level: 82 },
             ]
         },
     ];
@@ -105,9 +113,9 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="section-title">Areas of Expertise</h2>
+                    <h2 className="section-title">Technical Skills</h2>
                     <p className="section-subtitle">
-                        Specialized skills and technologies I work with
+                        Comprehensive skill set across full-stack development, AI integration, and cloud platforms
                     </p>
                 </motion.div>
 
@@ -158,6 +166,33 @@ const Skills = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Additional Skills Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="mt-12"
+                >
+                    <div className="glass-card p-8">
+                        <h3 className="text-2xl font-bold text-white mb-6 text-center">Practices & Soft Skills</h3>
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {[
+                                'Agile/Scrum', 'Jira', 'Performance Tuning', 'Security Hardening',
+                                'Problem-solving', 'Collaboration', 'Communication', 'Technical Documentation',
+                                'Algorithms', 'Data Structures'
+                            ].map((skill, idx) => (
+                                <span
+                                    key={idx}
+                                    className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 text-gray-300 font-medium hover:border-cyan-400 hover:text-cyan-400 transition-colors cursor-default"
+                                >
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );
